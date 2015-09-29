@@ -1,27 +1,7 @@
 Rails.application.routes.draw do
-  get 'rewards/new'
-
-  get 'rewards/create'
-
-  get 'rewards/edit'
-
-  get 'rewards/destroy'
-
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/edit'
-
-  get 'users/destroy'
-
-  get 'projects/new'
-
-  get 'projects/create'
-
-  get 'projects/edit'
-
-  get 'projects/destroy'
+  resources :users
+  resources :projects
+  resources :rewards
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
