@@ -1,0 +1,41 @@
+<%= form_for (@project) do |x| %>
+
+<div class="field">
+  <%= x.label :name %> <br />
+  <%= x.text_field :name %>
+</div>
+
+<div class="field">
+  <%= x.label :description %> <br />
+  <%= x.text_field :description %>
+</div>
+
+<div class="field">
+  <%= x.label :funding_goal %> <br />
+  <%= x.text_field :funding_goal %>
+</div>
+
+<div class="field">
+  <%= x.label :deadline %> <br />
+  <%= x.text_field :deadline %>
+</div>
+
+<div class="field">
+  <%= x.label :media %> <br />
+  <%= x.text_field :media %>
+</div>
+
+<div class="actions">
+  <%= x.submit %>
+</div>
+
+<h5> Rewards </h5>
+  <%= x.fields_for :rewards do |y| %>
+    <%= render 'rewards_fields', f: y %>
+  <% end %>
+
+  <div class='links'>
+    <%= link_to_add_association 'ANOTHA ONE', x, :rewards %>
+  </div>
+
+<% end %>

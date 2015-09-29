@@ -1,0 +1,27 @@
+<%= form_for (@user) do |x| %>
+
+<div class="field">
+  <%= x.label :email %> <br />
+  <%= x.text_field :email %>
+</div>
+
+<div class="field">
+  <%= x.label :password %> <br />
+  <%= x.text_field :password %>
+</div>
+
+<div class="field">
+  <%= x.label :first_name %> <br />
+  <%= x.text_field :first_name %>
+</div>
+
+<div class="field">
+  <%= x.label :last_name %> <br />
+  <%= x.text_field :last_name %>
+</div>
+
+<div class="actions">
+  <%= x.submit %>
+</div>
+
+<% end %>
