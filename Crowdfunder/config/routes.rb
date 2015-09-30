@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root :to => "projects#index"
+
   resources :sessions
   resources :users
   resources :projects do
