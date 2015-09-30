@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930225904) do
+ActiveRecord::Schema.define(version: 20150930233118) do
 
   create_table "pledges", force: :cascade do |t|
     t.integer  "amount"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150930225904) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "project_id"
+    t.integer  "reward_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -29,6 +30,8 @@ ActiveRecord::Schema.define(version: 20150930225904) do
     t.string   "media"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.integer  "backer_id"
   end
 
   create_table "rewards", force: :cascade do |t|
@@ -39,16 +42,18 @@ ActiveRecord::Schema.define(version: 20150930225904) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "project_id"
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",            null: false
+    t.string   "email",             null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "backed_project_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
