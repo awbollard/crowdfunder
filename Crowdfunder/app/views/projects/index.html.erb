@@ -5,4 +5,5 @@
 	<b>Description: </b><%= project.description %><br />
 	<b>Funding Goal: </b><%= project.funding_goal %><br />
 	<b>End date: </b><%= project.deadline %><br /><br />
+	<b><%= link_to "Back this project", project_path(project.id) %> </b>
 <% end %>

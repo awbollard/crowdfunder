@@ -13,5 +13,7 @@
     	<%= x.backer_limit %><br /><br />
     <% end %>
 
-    <%= link_to 'edit', edit_project_path %> 
+    <% if current_user %>
+        <%= link_to 'edit', edit_project_path %> 
+    <% end %>
 </p>

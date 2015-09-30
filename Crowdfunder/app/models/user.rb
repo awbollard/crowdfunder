@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, if: -> { new_record? || changes["password"] }
 
   validates :email, uniqueness: true
+
+  has_many :projects
+  has_many :backed_projects, through: :pledges, class_name: "Project", source: :project
+  has_many :pledges
+  has_many :rewards
 end
