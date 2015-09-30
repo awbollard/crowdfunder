@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
+  authenticates_with_sorcery!
 
-has_many :pledges
+  validates :password, length: { minimum: 8 }, if: -> { new_record? || changes["password"] }
+  validates :password, confirmation: true, length: { minimum: 8 }, if: -> { new_record? || changes["password"] }
+  validates :password_confirmation, presence: true, if: -> { new_record? || changes["password"] }
 
-# rails will be looking for Project due to 'class_name'
-has_many :owned_projects, class_name: 'Project' # project creation
-has_many :backed_projects, class_name: 'Project' # project backing
-
+  validates :email, uniqueness: true
 end

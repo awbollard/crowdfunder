@@ -25,17 +25,18 @@
   <%= x.text_field :media %>
 </div>
 
-<div class="actions">
-  <%= x.submit %>
-</div>
-
-<h5> Rewards </h5>
+<h3> Rewards </h3>
   <%= x.fields_for :rewards do |y| %>
-    <%= render 'rewards_fields', f: y %>
+    <%= render 'reward_fields', f: y %>
   <% end %>
 
   <div class='links'>
     <%= link_to_add_association 'ANOTHA ONE', x, :rewards %>
   </div>
+  <br />
+
+<div class="actions">
+  <%= x.submit %>
+</div>
 
 <% end %>

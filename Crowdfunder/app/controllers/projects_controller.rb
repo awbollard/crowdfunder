@@ -1,4 +1,8 @@
 class ProjectsController < ApplicationController
+  def index
+    @projects = Project.all
+  end
+  
   def new
     @project = Project.new
   end
@@ -23,7 +27,6 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find_by(id: params[:id])
-
     if @project.update_attributes(project_params)
       redirect_to project_path(@project)
     else
@@ -39,6 +42,6 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, :description, :funding_goal, :deadline, :media, rewards_attributes: [:name, :description, :amount, :backer_limit])
+    params.require(:project).permit(:name, :description, :funding_goal, :deadline, :media, rewards_attributes: [:id, :_destroy, :name, :description, :amount, :backer_limit])
   end
 end
