@@ -1,7 +1,7 @@
 class Reward < ActiveRecord::Base
 
 	belongs_to :project
-	belongs_to :user
+	has_many :users, through: :pledges
 	has_many :pledges
 
 end

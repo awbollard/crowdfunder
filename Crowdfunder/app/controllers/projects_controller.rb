@@ -9,9 +9,10 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
+    @project.user = current_user
 
     if @project.save
-      redirect_to project_path (@project)
+      redirect_to project_path(@project)
     else
       render :new
     end
@@ -23,6 +24,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find_by(id: params[:id])
+    @pledge = Pledge.new
   end
 
   def update

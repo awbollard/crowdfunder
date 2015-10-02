@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'pledges/create'
+
   root :to => "projects#index"
 
   resources :sessions
   resources :users
   resources :projects do
-    resources :rewards
+    resources :rewards do
+      resources :pledges, only: [:create]
+    end
   end
 
   get 'login' => 'sessions#new', :as => :login

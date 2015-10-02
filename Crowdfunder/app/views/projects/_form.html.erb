@@ -17,7 +17,7 @@
 
 <div class="field">
   <%= x.label :deadline %> <br />
-  <%= x.text_field :deadline %>
+  <%= x.datetime_select :deadline, {discard_minute: true, discard_hour: true} %>
 </div>
 
 <div class="field">

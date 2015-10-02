@@ -6,14 +6,20 @@
     <b>Funding Goal:</b> $<%= @project.funding_goal %> <br />
     <b>Deadline:</b> <%= @project.deadline %> <br /><br />
     <h2>Rewards:</h2>
-    <% @project.rewards.each do |x| %>
-    	<b><%= x.name %></b><br />
-    	<%= x.description %><br />
-    	<%= x.amount %><br />
-    	<%= x.backer_limit %><br /><br />
+    <% @project.rewards.each do |reward| %>
+    	<b><%= reward.name %></b><br />
+    	<b>Description:</b> <%= reward.description %><br />
+    	<b>Amount: $</b><%= reward.amount %><br />
+    	<b>Backer Limit:</b> <%= reward.backer_limit %><br />
+            <div class="reward" id="reward-<%= reward.id %>">
+            <%= form_for [@project, reward, @pledge], remote: true do |f| %>
+                    <%= f.hidden_field :amount, value: reward.amount %>
+                    <div class="button"><%= f.submit "Select this Reward" %></div><br /><br />
+                <% end %>
+            </div>
     <% end %>
 
-    <% if current_user %>
+    <% if @project.user == current_user %>
         <%= link_to 'edit', edit_project_path %> 
     <% end %>
 </p>
