@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :sessions
   resources :users
+  
   resources :projects do
     resources :rewards do
       resources :pledges, only: [:create]

@@ -1,0 +1,5 @@
+<% sum_pledge = 0 %>
+
+<% @project.rewards.pledges.each do |pledge| %>
+	<%= sum_pledge += pledge.amount %>
+<% end %>

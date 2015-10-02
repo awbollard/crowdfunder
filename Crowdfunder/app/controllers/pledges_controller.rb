@@ -1,7 +1,7 @@
 class PledgesController < ApplicationController
   def create
 
-  	# @project = Project.find_by(id: params[:id])
+  	@project = Project.find_by(id: params[:id])
   	@reward = Reward.find(params[:reward_id])
   	@pledge = Pledge.new(pledge_params)
   	@pledge.user = current_user
@@ -9,6 +9,10 @@ class PledgesController < ApplicationController
 
   	respond_to do |format|
   		if @pledge.save
+  			# recalculate the funding goal
+  			# make that available as an instance variable
+  			# so that create.js.erb can do something with it
+  			
   			format.html { redirect_to project_path(@project.id), notice: 'You Backed This!'}
   			format.js {}
   		else
